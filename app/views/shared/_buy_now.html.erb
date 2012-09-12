@@ -1,0 +1,20 @@
+<%= form_for :order, :url => buy_now_orders_url do |f| %>
+  <div id="inside-product-cart-form" data-hook="inside_product_cart_form" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+    <% if product.price %>
+      <div data-hook="product_price" class="columns five <% if !product.has_variants? %> alpha <% else %> omega <% end %>">
+        <div class="add-to-cart">
+          <% if product.has_stock? || Spree::Config[:allow_backorders] %>
+            <%= hidden_field_tag (product.has_variants? ? :quantity : "variants[#{product.master.id}]"), 1, :class => 'title', :in => 1..product.on_hand %>
+            <%= button_tag :class => 'large primary', :id => 'add-to-cart-button', :type => :submit do %>
+              Buy Now
+            <% end %>
+          <% else %>
+            <%= content_tag('strong', t(:out_of_stock)) %>
+          <% end %>
+        </div>
+
+      </div>
+    <% end %>
+
+  </div>
+<% end %>
