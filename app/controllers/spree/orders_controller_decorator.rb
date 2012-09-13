@@ -9,7 +9,7 @@ Spree::OrdersController.class_eval do
     #  quantity = params[:quantity][variant_id].to_i if params[:quantity].is_a?(Hash)
     #  @order.add_variant(Spree::Variant.find(variant_id), quantity) if quantity > 0
     #end if params[:products]
-
+    logger.info("############################## Buy Now #########################")
     params[:variants].each do |variant_id, quantity|
       quantity = quantity.to_i
       @order.buy_now(Spree::Variant.find(variant_id), quantity) if quantity > 0

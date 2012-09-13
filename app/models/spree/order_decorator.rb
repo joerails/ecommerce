@@ -26,6 +26,15 @@ Spree::Order.class_eval do
     self.reload
     current_item
   end
+
+  def merge!(order)
+    logger.info(" I am here")
+    order.line_items.each do |line_item|
+      logger.info("##########################{line_item.inspect}")
+      self.add_variant(line_item.variant, 0)
+    end
+    order.destroy
+  end
 end
 #  end
 #end
