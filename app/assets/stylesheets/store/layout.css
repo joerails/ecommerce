@@ -24,8 +24,9 @@ footer#footer {
  padding: 60px 0;
 }
 
-.row {
-  margin-bottom: 115px;
+.container #wrapper{
+  margin-top: 30px;
+  margin-bottom: 300px;
 }
 
 .footerLogocontainer a.footeLogo {
@@ -53,6 +54,7 @@ footer#footer {
   font-family: Helvetica,Arial,sans-serif;
   font-size: 14px;
   text-align: center;
+  padding: 0px;
 }
 
 a.logo {

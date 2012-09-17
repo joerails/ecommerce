@@ -14,11 +14,11 @@ Spree::Order.class_eval do
   #attr_accessor :use_billing
 
   def buy_now(variant, quantity = 1)
-    current_item = find_line_item_by_variant(variant)
-    if current_item
-      self.empty!
-    end
-
+    self.empty!
+    #current_item = find_line_item_by_variant(variant)
+    #if current_item
+    #  self.empty!
+    #end
     current_item = Spree::LineItem.new(:quantity => quantity)
     current_item.variant = variant
     current_item.price   = variant.price
@@ -29,9 +29,11 @@ Spree::Order.class_eval do
 
   def merge!(order)
     logger.info(" I am here")
+    logger.info("######################{order.inspect}")
     order.line_items.each do |line_item|
-      logger.info("##########################{line_item.inspect}")
-      self.add_variant(line_item.variant, 0)
+      #logger.info("##########################{line_item.inspect}")
+      #self.buy_now(line_item.variant, 1)
+      line_item.destroy
     end
     order.destroy
   end
