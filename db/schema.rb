@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120903151327) do
+ActiveRecord::Schema.define(:version => 20120917072948) do
 
   create_table "promoted_items", :force => true do |t|
     t.string   "title"
@@ -580,6 +580,8 @@ ActiveRecord::Schema.define(:version => 20120903151327) do
     t.integer  "count_on_hand",                               :default => 0,     :null => false
     t.decimal  "cost_price",    :precision => 8, :scale => 2
     t.integer  "position"
+    t.integer  "min_qty"
+    t.integer  "max_qty"
   end
 
   add_index "spree_variants", ["product_id"], :name => "index_spree_variants_on_product_id"
